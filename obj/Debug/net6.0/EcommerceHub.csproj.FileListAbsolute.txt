@@ -1,0 +1,7 @@
+D:\ecommerce_hub\obj\Debug\net6.0\EcommerceHub.GeneratedMSBuildEditorConfig.editorconfig
+D:\ecommerce_hub\obj\Debug\net6.0\EcommerceHub.AssemblyInfoInputs.cache
+D:\ecommerce_hub\obj\Debug\net6.0\EcommerceHub.AssemblyInfo.cs
+D:\ecommerce_hub\obj\Debug\net6.0\EcommerceHub.csproj.CoreCompileInputs.cache
+D:\ecommerce_hub\obj\Debug\net6.0\EcommerceHub.MvcApplicationPartsAssemblyInfo.cache
+D:\ecommerce_hub\obj\Debug\net6.0\EcommerceHub.RazorAssemblyInfo.cache
+D:\ecommerce_hub\obj\Debug\net6.0\EcommerceHub.RazorAssemblyInfo.cs
