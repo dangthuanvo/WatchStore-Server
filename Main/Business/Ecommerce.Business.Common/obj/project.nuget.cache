@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jZSVvPS/jPfUm1zrry2fR3qu8ZCiym9X7tDlE/yVwmViRTu7Qc9DC3f+/3TkdvHYWsVCydoQM67huvbhgUyiGQ==",
+  "dgSpecHash": "FdAvWzHyqUK1DNORPez+2u4Ow2tdOg1z2baXgZsEnkvYf4ydOEy5QgE8ePxpHYD851XVQygiKsnW//MEWf98XA==",
   "success": true,
-  "projectFilePath": "D:\\ecommerce_hub\\Main\\Business\\Ecommerce.Business.Common\\Ecommerce.Business.Common.csproj",
+  "projectFilePath": "D:\\c-sharp\\dotnet-research\\EcommerceHub\\Main\\Business\\Ecommerce.Business.Common\\Ecommerce.Business.Common.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

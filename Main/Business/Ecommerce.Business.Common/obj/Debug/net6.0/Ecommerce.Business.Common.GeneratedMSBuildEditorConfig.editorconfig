@@ -8,4 +8,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Ecommerce.Business.Common
-build_property.ProjectDir = D:\ecommerce_hub\Main\Business\Ecommerce.Business.Common\
+build_property.ProjectDir = D:\c-sharp\dotnet-research\EcommerceHub\Main\Business\Ecommerce.Business.Common\
