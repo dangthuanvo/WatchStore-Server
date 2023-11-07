@@ -1,6 +1,6 @@
 ﻿using Ecommerce.SharedKernel.Extensions;
 
-namespace Ecommerce.Domain.Common
+namespace Grand.Domain.Common
 {
     public static class UserFieldExtensions
     {
