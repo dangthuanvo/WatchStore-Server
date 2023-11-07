@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MA3C87nyoPO67hAZomUzHTeDyhMHqVv42+6kCD3dD5Ej6qlbiOSVKLj2RdHBW/JQVFTimHfsDP8wM91ke0Wu9Q==",
+  "dgSpecHash": "BA1lQknAOELppsND8QqKlhiH4aFJWS4UMZ+lI+RuI0dlJuocSM4ylUuzLt2qUSoYS04oMnR0XHeKqpAfuaLcAw==",
   "success": true,
-  "projectFilePath": "D:\\ecommerce_hub\\Main\\Api\\Ecommerce.Api\\Ecommerce.Api.csproj",
+  "projectFilePath": "D:\\c-sharp\\dotnet-research\\EcommerceHub\\Main\\Api\\Ecommerce.Api\\Ecommerce.Api.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
