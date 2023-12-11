@@ -41,4 +41,7 @@ public class Products {
 	@JoinColumn(name = "categories_id")
 	private Categories categories;
 	
+	@OneToMany(mappedBy = "product", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<ProductReview> productReviews;
+
 }
