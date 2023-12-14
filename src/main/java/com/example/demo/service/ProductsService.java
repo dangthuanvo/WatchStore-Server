@@ -11,11 +11,13 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.dto.ProductReviewDTO;
 import com.example.demo.dto.ProductsDTO;
 import com.example.demo.entity.Categories;
-
+import com.example.demo.entity.ProductReview;
 import com.example.demo.entity.Products;
 import com.example.demo.repository.CategoriesRepo;
+import com.example.demo.repository.ProductReviewRepo;
 import com.example.demo.repository.ProductsRepo;
 
 
@@ -40,6 +42,9 @@ class ProductsServiceImpl implements ProductsService {
 	private ProductsRepo productsRepo;
 	
 	@Autowired
+	private ProductReviewRepo productReviewRepo;
+	
+	@Autowired
 	private CategoriesRepo categoriesRepo;
 
 	@Transactional
@@ -59,16 +64,29 @@ class ProductsServiceImpl implements ProductsService {
 	@Override
 	@Transactional
 	public void update(ProductsDTO productsDTO) {
-		// check
-		Products products = productsRepo.findById(productsDTO.getId()).orElseThrow(NoResultException::new);
-		//Categories categories = new ModelMapper().map(productsDTO.getCategory(), Categories.class);
-		products.setName(productsDTO.getName());
-		//products.setCategories(categories);
-			// save entity
-		productsRepo.save(products);
-	    
+	    // Kiểm tra xem Products đã tồn tại trong cơ sở dữ liệu chưa
+	    Products products = productsRepo.findById(productsDTO.getId()).orElseThrow(NoResultException::new);
 
+	    // Cập nhật thông tin của Products từ DTO
+	    products.setName(productsDTO.getName());
+
+	    // Chuyển đổi List<ProductReviewDTO> sang List<ProductReview>
+	    List<ProductReviewDTO> productReviewDTOList = productsDTO.getProductReviews();
+	    List<ProductReview> productReviewList = productReviewDTOList.stream()
+	            .map(productReviewDTO -> new ModelMapper().map(productReviewDTO, ProductReview.class))
+	            .collect(Collectors.toList());
+
+	    // Cập nhật hoặc thêm mới các ProductReview
+	    for (ProductReview productReview : productReviewList) {
+	        productReview.setProduct(products); // Liên kết với Products
+	        // Cập nhật hoặc thêm mới ProductReview
+	        productReviewRepo.save(productReview);
+	    }
+
+	    // Lưu đối tượng Products
+	    productsRepo.save(products);
 	}
+
 	
 	@Override
 	public void delete(int id) {
