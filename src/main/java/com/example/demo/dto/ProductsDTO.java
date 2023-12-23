@@ -20,6 +20,10 @@ public class ProductsDTO {
 	
 	private int quantity;
 
+	private String origin;
+	
+	private String material;
+
 	private CategoriesDTO category;
 	
 	private List<ProductReviewDTO> productReviews;

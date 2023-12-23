@@ -9,6 +9,7 @@ public class ShopDTO {
     private String name;
     private String address;
     private String phone;
+    private double star;
     private int isBranch; // 0 is branch, 1 is manager
 	private List<CategoriesDTO> categories;
    

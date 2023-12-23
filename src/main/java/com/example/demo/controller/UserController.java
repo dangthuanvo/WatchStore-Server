@@ -113,6 +113,13 @@ public class UserController {
 		return "edit-user.html";
 	}
 	
+	@PostMapping("/change_password")
+	public ResponseDTO<Void> changeUserPassword(@RequestParam("id") int id,@RequestParam("password") String password) throws Exception {
+
+		userService.changeUserPassword(id,password);
+		return ResponseDTO.<Void>builder().status(200).msg("ok").build();
+	}
+	
 	@PostMapping("/edit")
 	public ResponseDTO<Void> edit(@ModelAttribute("user") @Valid UserDTO userDTO) throws Exception {
 	

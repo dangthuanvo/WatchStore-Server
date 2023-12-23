@@ -12,6 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.dto.PageDTO;
 import com.example.demo.dto.SearchDTO;
@@ -55,6 +56,16 @@ public class UserService {
             if (userDTO != null && userDTO.getAvatarUrl() != null) {
             	currentUser.setAvatarUrl(userDTO.getAvatarUrl());
             }
+			userRepo.save(currentUser);
+		}
+	}
+	
+	@Transactional
+	public void changeUserPassword(int id,String password) {
+		// check
+		User currentUser = userRepo.findById(id).orElse(null);
+		if (currentUser != null) {
+			currentUser.setPassword(password);
 			userRepo.save(currentUser);
 		}
 	}

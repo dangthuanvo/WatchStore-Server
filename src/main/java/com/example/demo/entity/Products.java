@@ -37,6 +37,10 @@ public class Products {
 	
 	private String imageUrl;
 	
+	private String origin;
+
+	private String material;
+	
 	@ManyToOne
 	@JoinColumn(name = "categories_id")
 	private Categories categories;
