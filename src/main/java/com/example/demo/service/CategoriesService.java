@@ -65,6 +65,10 @@ class CategoriesServiceImpl implements CategoriesService {
 	        // Cập nhật các thuộc tính khác của sản phẩm
 
 	        product.setCategories(categories);
+	        product.setPrice(productDTO.getPrice());
+	        product.setQuantity(productDTO.getQuantity());
+	        product.setOrigin(productDTO.getOrigin());
+	        product.setMaterial(productDTO.getMaterial());
 	        categories.getProducts().add(product);
 	    }
 

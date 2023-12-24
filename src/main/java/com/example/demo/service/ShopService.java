@@ -12,10 +12,12 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.dto.CategoriesDTO;
 import com.example.demo.dto.ShopDTO;
 import com.example.demo.entity.Categories;
 import com.example.demo.entity.Shop;
 import com.example.demo.entity.User;
+import com.example.demo.repository.CategoriesRepo;
 import com.example.demo.repository.ShopRepo;
 
 public interface ShopService {
@@ -38,7 +40,9 @@ class ShopServiceImpl implements ShopService {
 	@Autowired
 	private ShopRepo shopRepo;
 
-
+	@Autowired
+	private CategoriesRepo categoriesRepo;
+	
 	@Override
 	@Transactional
 	public void create(ShopDTO shopDTO) {
@@ -48,22 +52,35 @@ class ShopServiceImpl implements ShopService {
 
 	@Override
 	public void update(ShopDTO shopDTO) {
-		// check
-		Shop currentShop = shopRepo.findById(shopDTO.getId()).orElseThrow(NoResultException::new);
-		List<Categories> listCategories = new ArrayList<Categories>();
-		for (int i = 0; i < shopDTO.getCategories().size(); i++) {
-			Categories categories = new ModelMapper().map(shopDTO.getCategories().get(i), Categories.class);
-			listCategories.add(categories);
-		}
-		if (currentShop != null) {
-			currentShop.setName(shopDTO.getName());
-			currentShop.setAddress(shopDTO.getAddress());
-			currentShop.setPhone(shopDTO.getPhone());
-            currentShop.setCategories(listCategories);
-			shopRepo.save(currentShop);
-		}
+        // Kiểm tra xem cửa hàng có tồn tại không
+        Shop currentShop = shopRepo.findById(shopDTO.getId()).orElseThrow(NoResultException::new);
 
-	}
+        // Cập nhật thông tin cửa hàng từ DTO
+        currentShop.setName(shopDTO.getName());
+        currentShop.setAddress(shopDTO.getAddress());
+        currentShop.setPhone(shopDTO.getPhone());
+        currentShop.setStar(shopDTO.getStar());
+    
+
+        // Thêm các categories từ DTO
+        List<CategoriesDTO> categoriesDTOList = shopDTO.getCategories();
+        if (categoriesDTOList != null) {
+            for (CategoriesDTO categoriesDTO : categoriesDTOList) {
+            	Categories categories = categoriesRepo.findById(categoriesDTO.getId()).orElseThrow(NoResultException::new);
+                categories.setName(categoriesDTO.getName());
+                categories.setCategoryUrl(categoriesDTO.getCategoryUrl());
+                // Thêm sản phẩm vào cửa hàng và ngược lại
+                currentShop.getCategories().add(categories);
+                categories.setShop(currentShop);
+
+                // Lưu Categories vào cơ sở dữ liệu (nếu cần)
+                categoriesRepo.save(categories);
+            }
+        }
+
+        // Lưu cửa hàng vào cơ sở dữ liệu
+        shopRepo.save(currentShop);
+    }
 	
 	@Override
 	public void delete(int id) {

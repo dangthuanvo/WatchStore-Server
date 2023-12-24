@@ -69,7 +69,11 @@ class ProductsServiceImpl implements ProductsService {
 
 	    // Cập nhật thông tin của Products từ DTO
 	    products.setName(productsDTO.getName());
-
+	    products.setQuantity(productsDTO.getQuantity());
+	    products.setPrice(productsDTO.getPrice());
+	    products.setOrigin(productsDTO.getOrigin());
+	    products.setDescription(productsDTO.getDescription());
+	    products.setMaterial(productsDTO.getMaterial());
 	    // Chuyển đổi List<ProductReviewDTO> sang List<ProductReview>
 	    List<ProductReviewDTO> productReviewDTOList = productsDTO.getProductReviews();
 	    List<ProductReview> productReviewList = productReviewDTOList.stream()
